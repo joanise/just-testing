@@ -55,8 +55,9 @@ jobs:
       - name: Test if stops at first error
         run: |
           echo Before
-          false
-          echo After, this should not get printed.
+          #false
+          echo After, this should not get printed. Well, it will be printed since I commented out false
+          echo The false above caused the CI workflow to be considered to have failed, as desired.
 
       # Find out some repo information
       - name: Talk to me
