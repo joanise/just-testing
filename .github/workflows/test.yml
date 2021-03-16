@@ -34,3 +34,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      # Find out some repo information
+      - name: Talk to me
+        run: |
+          git show
