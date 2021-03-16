@@ -1,0 +1,12 @@
+name: Play With Variables
+on:
+  push:
+    branches: *
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses actions/checkout@v2
+    - name: Talk To Me
+      run: |
+        git log --oneline
