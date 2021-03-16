@@ -49,6 +49,9 @@ jobs:
           git tag -a -m "Tagging commit $DATE" commit$DATE
           git push origin commit$DATE
 
+      - name: Are rules sequential and contextual
+        run: ls -la build
+
       # Find out some repo information
       - name: Talk to me
         run: |
