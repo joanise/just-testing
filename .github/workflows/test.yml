@@ -34,6 +34,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
+      - name: create a file
+        run: |
+          DATE=`date +"%Y%m%d"`
+          mkdir build
+          touch build/v$DATE
+          ls -la build
+
       # Find out some repo information
       - name: Talk to me
         run: |
