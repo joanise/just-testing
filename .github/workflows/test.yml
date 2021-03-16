@@ -44,7 +44,7 @@ jobs:
       - name: tag the commit
         run: |
           DATE=`date +"%Y%m%d%H%M%S"`
-          git tag -a "Tagging commit $DATE" commit$DATE
+          git tag -a -m "Tagging commit $DATE" commit$DATE
           git push origin commit$DATE
 
       # Find out some repo information
