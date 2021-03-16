@@ -6,7 +6,6 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -34,6 +33,30 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: create a file
+        run: |
+          DATE=`date +"%Y%m%d"`
+          mkdir build
+          touch build/v$DATE
+          ls -la build
+
+      - name: tag the commit
+        run: |
+          DATE=`date +"%Y%m%d%H%M%S"`
+          git config --global user.email Eric.Joanis@nrc-cnrc.gc.ca
+          git config --global user.name "Eric Joanis via GitHub Actions"
+          git tag -a -m "Tagging commit $DATE" commit$DATE
+          git push origin commit$DATE
+
+      - name: Are rules sequential and contextual
+        run: ls -la build
+
+      - name: Test if stops at first error
+        run: |
+          echo Before
+          false
+          echo After, this should not get printed.
 
       # Find out some repo information
       - name: Talk to me
