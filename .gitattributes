@@ -1,1 +1,2 @@
 *.big filter=lfs diff=lfs merge=lfs -text
+big-file-no-ext filter=lfs diff=lfs merge=lfs -text
