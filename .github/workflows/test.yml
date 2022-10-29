@@ -40,14 +40,21 @@ jobs:
           mkdir build
           touch build/v$DATE
           ls -la build
-
-      - name: tag the commit
+      
+      - name: Does cd carry from line to line
         run: |
-          DATE=`date +"%Y%m%d%H%M%S"`
-          git config --global user.email Eric.Joanis@nrc-cnrc.gc.ca
-          git config --global user.name "Eric Joanis via GitHub Actions"
-          git tag -a -m "Tagging commit $DATE" commit$DATE
-          git push origin commit$DATE
+          pwd
+          cd ..
+          pwd
+          cd .. & pwd
+
+      #- name: tag the commit
+      #  run: |
+      #    DATE=`date +"%Y%m%d%H%M%S"`
+      #    git config --global user.email Eric.Joanis@nrc-cnrc.gc.ca
+      #    git config --global user.name "Eric Joanis via GitHub Actions"
+      #    git tag -a -m "Tagging commit $DATE" commit$DATE
+      #    git push origin commit$DATE
 
       - name: Are rules sequential and contextual
         run: ls -la build
