@@ -51,6 +51,9 @@ jobs:
       - name: does background work?
         run: |
           echo start && sleep 3 && echo stop &
+
+      - name: does background work accross steps?
+        run: |
           echo w1 && sleep 1 && echo w2 && sleep 1 && echo w3 && sleep 1 && echo w4
 
       #- name: tag the commit
