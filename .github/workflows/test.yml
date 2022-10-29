@@ -50,7 +50,7 @@ jobs:
 
       - name: does background work?
         run: |
-          date && sleep 3 && date &
+          date && sleep 5 && date &
 
       - name: does background work accross steps?
         run: |
