@@ -46,7 +46,7 @@ jobs:
           pwd
           cd ..
           pwd
-          cd .. & pwd
+          cd .. && pwd
 
       #- name: tag the commit
       #  run: |
