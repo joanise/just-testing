@@ -78,3 +78,7 @@ jobs:
       - name: Talk to me
         run: |
           git show
+
+      - name: display the full GitHub context
+        run: |
+          echo ${{ toJson(github) }}
