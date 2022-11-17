@@ -84,9 +84,8 @@ jobs:
           echo ${{ toJson(github) }}
 
       - name: Create a var
-        id: create_a_var
-        run: |
-          echo "MY_VAR=$(uname -a)" >> $GITHUB_OUTPUT
+        id: create-a-var
+        run: echo "MY_VAR=$(uname -a)" >> $GITHUB_OUTPUT
 
       - name: Use a var
-        run: echo "MY_VAR=${{steps.create_a_var.MY_VAR}}"
+        run: echo "MY_VAR=${{ steps.create-a-var.outputs.MY_VAR }}"
