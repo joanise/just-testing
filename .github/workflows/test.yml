@@ -13,11 +13,26 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      # exit if up to date with parent
+      - name: Check if PR up to date
+        id: uptodate
+        run: if [[ "${{ github.event_name }}" == "pull_request" ]] && git diff --quiet HEAD HEAD^2; then echo "BASE_BRANCH_UPTODATE=True" >> "$GITHUB_OUTPUT"; exit; fi
+
+
   # This workflow contains a single job called "build"
   build:
     # if  github.event.pull_request.labels[0].name != 'bug'
     # if: ${{ !contains(github.event.head_commit.message, 'dependabot[bot] <support@github.com>') }}
-    if: ${{ github.event_name == 'push' || github.event.pull_request.merge_commit_sha != 'null' }}
+    #if: ${{ github.event_name == 'push' || github.event.pull_request.merge_commit_sha != 'null' }}
+    if: ${{ check.steps.uptodate.outputs.BASE_BRANCH_UPTODATE != "True" }}
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -90,8 +105,8 @@ jobs:
 
       - name: display the full GitHub context
         run: |
-          echo "${{ toJson(github) }}" > /dev/null
-          echo "${{ toJson(job) }}" > /dev/null
+          echo github "${{ toJson(github) }}" > /dev/null
+          echo job "${{ toJson(job) }}" > /dev/null
 
       - name: Create a var
         id: create-a-var
