@@ -84,7 +84,7 @@ jobs:
 
       - name: display the full GitHub context
         run: |
-          echo "${{ toJson(github) }}"
+          echo "${{ toJson(github) }}" > /dev/null
 
       - name: Create a var
         id: create-a-var
