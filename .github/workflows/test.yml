@@ -26,6 +26,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      # exit if up to date with parent
+      - name: Check if PR up to date
+        run: if [[ "${{ github.event_name }}" == "pull_request" ]] && git diff --quiet HEAD HEAD^; then exit
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
