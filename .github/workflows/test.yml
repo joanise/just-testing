@@ -31,7 +31,7 @@ jobs:
 
       # exit if up to date with parent
       - name: Check if PR up to date
-        run: if [[ "${{ github.event_name }}" == "pull_request" ]] && git diff --quiet HEAD HEAD^; then echo Base branch up to date; exit; fi
+        run: if [[ "${{ github.event_name }}" == "pull_request" ]] && git diff --quiet HEAD HEAD^2; then echo Base branch up to date; exit; fi
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -91,6 +91,7 @@ jobs:
       - name: display the full GitHub context
         run: |
           echo "${{ toJson(github) }}" > /dev/null
+          echo "${{ toJson(job) }}" > /dev/null
 
       - name: Create a var
         id: create-a-var
