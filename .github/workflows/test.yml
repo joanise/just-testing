@@ -17,7 +17,7 @@ jobs:
   build:
     # if  github.event.pull_request.labels[0].name != 'bug'
     if: ${{ !contains(github.event.head_commit.message, 'dependabot[bot] <support@github.com>') }}
-    if: ${{ github.event_name == push || github.event.pull_request.merge_commit_sha != null }}
+    if: ${{ github.event_name == 'push' || github.event.pull_request.merge_commit_sha != 'null' }}
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
