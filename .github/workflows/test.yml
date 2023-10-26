@@ -102,4 +102,7 @@ jobs:
         run: false
 
       - name: verbose
-        run: echo "steps=${{ toJson(steps) }}"
+        run: |
+          echo <<__END__
+          steps=${{ toJson(jobs) }}
+          __END__
