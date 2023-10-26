@@ -115,3 +115,14 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: |
           echo "steps: $STEPS_CONTEXT"
+
+      - name: check good only
+        continue-on-error: true
+        run: test "${{ steps.ok1.exit_code }}" == ""
+      
+      - name: check all
+        continue-on-error: true
+        run: |
+          if [[ "${{ steps.err1.exit_code }}" == "1" || "${{ steps.ok1.exit_code }}" != "" ]]; then echo one failure as expected; fi
+          if [[ "${{ steps.err1.exit_code }}" != "" || "${{ steps.ok1.exit_code }}" != "" ]]; then echo ERROR; false; fi
+          echo This should not get printed
