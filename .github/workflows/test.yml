@@ -94,12 +94,19 @@ jobs:
         run: echo "MY_VAR=${{ steps.create-a-var.outputs.MY_VAR }}"
 
       - name: error 1
+        id: err1
         continue-on-error: true
-        run: false
+        run: false || echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: error 2
+        id: err2
         continue-on-error: true
-        run: false
+        run: false || echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+      - name OK 1
+        id: ok1
+        continue-on-error: true
+        run: true || echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: verbose
-        run: echo "steps=${{ toJson(jobs) }}"
+        run: echo "steps=${{ toJson(steps) }}"
