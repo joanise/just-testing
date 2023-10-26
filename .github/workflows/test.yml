@@ -142,6 +142,10 @@ jobs:
         if: failure()
         run: echo There was some failure somewhere up there
 
+      - name: semi-consicely check for failure
+        if: steps.err2.outcome == 'failure'
+        run: echo err2 failed
+
       - name: check all
         continue-on-error: true
         run: |
