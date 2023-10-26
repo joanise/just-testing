@@ -121,12 +121,22 @@ jobs:
         run: test "${{ steps.ok1.outputs.exit_code }}" == ""
       
       - name: if good OK
-        if: steps.ok1.outputs.exit_code != ''
+        if: steps.ok1.outputs.exit_code == ''
         run: echo ok1 is good
 
       - name: if bad OK
-        if: steps.err1.outputs.exit_code != ''
+        if: steps.err1.outputs.exit_code == ''
         run: echo err1 is good
+
+      - name: fail but continue
+        id: fail1
+        continue-on-error: true
+        run: false
+
+      - name: report fail
+        env:
+          FAIL_STEP: ${{ toJson(steps.fail1) }}
+        run: echo "$FAIL_STEP"
 
       - name: check all
         run: |
