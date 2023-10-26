@@ -103,7 +103,7 @@ jobs:
         continue-on-error: true
         run: false || echo "exit_code=$?" >> $GITHUB_OUTPUT
 
-      - name OK 1
+      - name: OK 1
         id: ok1
         continue-on-error: true
         run: true || echo "exit_code=$?" >> $GITHUB_OUTPUT
