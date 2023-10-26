@@ -83,8 +83,10 @@ jobs:
           git show
 
       - name: display the full GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo "${{ toJson(github) }}"
+          echo "github: $GITHUB_CONTEXT"
 
       - name: Create a var
         id: create-a-var
@@ -109,4 +111,7 @@ jobs:
         run: true || echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: verbose
-        run: echo "steps=${{ toJson(steps) }}"
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: |
+          echo "steps: $STEPS_CONTEXT"
