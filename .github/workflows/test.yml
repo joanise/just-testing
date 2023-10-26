@@ -120,6 +120,14 @@ jobs:
         continue-on-error: true
         run: test "${{ steps.ok1.outputs.exit_code }}" == ""
       
+      - name: if good OK
+        if: ${{ steps.ok1.outputs.exit_code != "" }}
+        run: echo ok1 is good
+
+      - name: if bad OK
+        if: ${{ steps.err1.outputs.exit_code != "" }}
+        run: echo err1 is good
+
       - name: check all
         run: |
           if [[ "${{ steps.err1.outputs.exit_code }}" == "1" || "${{ steps.ok1.outputs.exit_code }}" != "" ]]; then echo one failure as expected; fi
