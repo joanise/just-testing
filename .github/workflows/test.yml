@@ -138,7 +138,12 @@ jobs:
           FAIL_STEP: ${{ toJson(steps.fail1) }}
         run: echo "$FAIL_STEP"
 
+      - name: concisely check all
+        if: failure()
+        run: echo There was some failure somewhere up there
+
       - name: check all
+        continue-on-error: true
         run: |
           if [[ "${{ steps.err1.outputs.exit_code }}" == "1" || "${{ steps.ok1.outputs.exit_code }}" != "" ]]; then echo one failure as expected; fi
           if [[ "${{ steps.err1.outputs.exit_code }}" != "" || "${{ steps.ok1.outputs.exit_code }}" != "" ]]; then echo ERROR; false; fi
