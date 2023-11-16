@@ -1,0 +1,13 @@
+name: Matrix test for gzip
+on: push
+jobs:
+  gzip-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: gzip test
+        run: |
+          echo "Hello World" | gzip | xxd
