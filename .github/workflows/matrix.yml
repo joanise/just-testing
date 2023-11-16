@@ -9,5 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: gzip test
+        shell: bash
         run: |
           echo "Hello World" | gzip | ./zero-gzip-timestamp.sh | xxd

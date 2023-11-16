@@ -4,7 +4,11 @@
 #    Replaces the timestamp field in filename.gz by 0000 so the gzip file
 #    contents do not depend on compression date
 
-head -c 4
-head -c 4 > /dev/null
+TEMPFILE=$(mktemp)
+cat > $TEMPFILE
+
+head -c 4 $TEMPFILE
 printf '\00\00\00\00'
-cat
+tail -c +9 $TEMPFILE
+
+rm $TEMPFILE
