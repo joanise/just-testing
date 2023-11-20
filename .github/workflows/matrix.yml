@@ -16,3 +16,11 @@ jobs:
       - name: gzip help
         shell: bash
         run: gzip --version; gzip --help
+      - name: with file
+        shell: bash
+        run: |
+          echo "Hello World" > hello.txt
+          gzip -9 < hello.txt | xxd
+          gzip -9 -n < hello.txt | xxd
+          gzip -9 hello.txt
+          xxd hello.txt.gz
