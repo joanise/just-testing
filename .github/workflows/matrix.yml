@@ -12,3 +12,4 @@ jobs:
         shell: bash
         run: |
           echo "Hello World" | gzip | ./zero-gzip-timestamp.sh | xxd
+          echo "Hello World" | gzip -n | xxd
