@@ -24,3 +24,6 @@ jobs:
           gzip -9 -n < hello.txt | xxd
           gzip -9 hello.txt
           xxd hello.txt.gz
+          gunzip hello.txt.gz
+          gzip -9 -n hello.txt
+          xxd hello.txt.gz
