@@ -12,4 +12,7 @@ jobs:
         shell: bash
         run: |
           echo "Hello World" | gzip | ./zero-gzip-timestamp.sh | xxd
-          echo "Hello World" | gzip -n | xxd
+          echo "Hello World" | gzip --no-name | xxd
+      - name: gzip help
+        shell: bash
+        run: gzip --version; gzip --help
