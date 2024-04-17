@@ -1,10 +1,5 @@
 ## PR template: please provide enough information to guide your reviewers.
 
-<!-- Basic checklist -->
-
-- [ ] Make sure your changes or exercised by automated testing (as much as possible)
-- [ ] Make sure CI passes and review CI error logs if not
-
 <!-- Brief questions -->
 
 | Q                        | A
