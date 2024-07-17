@@ -1,0 +1,3 @@
+[submodule "Studio"]
+	path = Studio
+	url = file:../Studio

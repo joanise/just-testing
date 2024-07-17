@@ -92,3 +92,16 @@ jobs:
 
       - name: Use a var
         run: echo "MY_VAR=${{ steps.create-a-var.outputs.MY_VAR }}"
+
+  reuser:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      my-arg: top level reuser
+    
+  step-reuser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.guthub/workflows/reusable.yml
+        continue-on-error: true
+        with:
+          my-arg: step level reuser

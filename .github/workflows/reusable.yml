@@ -1,0 +1,15 @@
+name: Worflow with input
+on:
+  workflow_call:
+    inputs:
+      my-arg:
+        required: true
+        type: string
+
+jobs:
+  print_input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: display my arg
+        run: echo ${{ inputs.my_arg }}
+
