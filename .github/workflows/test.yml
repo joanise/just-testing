@@ -81,12 +81,12 @@ jobs:
 
       # Find out some repo information
       - name: Talk to me
-        run: |
-          git show
+        run: git show
 
       - name: display the full GitHub context
-        run: |
-          echo "${{ toJson(github) }}"
+        env:
+          context: ${{ toJson(github) }}
+        run: echo "$context"
 
       - name: Create a var
         id: create-a-var
