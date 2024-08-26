@@ -100,7 +100,9 @@ jobs:
         run: echo "SOME_VAR=$(cat .SOME_VAR)" >> $GITHUB_ENV
 
       - name: use env var
-        run: echo SOME_VAR: $SOME_VAR
+        run: |
+          echo "SOME_VAR: $SOME_VAR"
+          env
 
       - name: Git describe tests
         run: |
