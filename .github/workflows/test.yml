@@ -96,6 +96,12 @@ jobs:
       - name: Use a var
         run: echo "MY_VAR=${{ steps.create-a-var.outputs.MY_VAR }}"
 
+      - name: env var
+        run: echo "SOME_VAR=$(cat .SOME_VAR)" >> $GITHUB_ENV
+
+      - name: use env var
+        run: echo SOME_VAR: $SOME_VAR
+
       - name: Git describe tests
         run: |
           git describe
