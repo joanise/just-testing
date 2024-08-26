@@ -131,5 +131,4 @@ jobs:
       - name: set an env var from file
         run: cat .SOME_VAR >> $GITHUB_ENV
       - name: use an env var
-        run: echo "SOME_VAR: $Env:SOME_VAR"
-
+        run: echo "SOME_VAR= $Env:SOME_VAR"
