@@ -97,7 +97,8 @@ jobs:
         run: echo "MY_VAR=${{ steps.create-a-var.outputs.MY_VAR }}"
 
       - name: env var
-        run: echo "SOME_VAR=$(cat .SOME_VAR)" >> $GITHUB_ENV
+        #run: echo "SOME_VAR=$(cat .SOME_VAR)" >> $GITHUB_ENV
+        run: cat .SOME_VAR >> $GITHUB_ENV
 
       - name: use env var
         run: |
@@ -122,3 +123,13 @@ jobs:
         continue-on-error: true
         with:
           my-arg: step level reuser
+
+  windows-var:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: set an env var from file
+        run: cat .SOME_VAR >> $GITHUB_ENV
+      - name: use an env var
+        run: echo "SOME_VAR: %SOME_VAR%"
+
