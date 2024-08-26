@@ -129,8 +129,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: set an env var from file
+        shell: bash
         run: cat .SOME_VAR >> $GITHUB_ENV
       - name: use an env var
+        shell: bash
         run: |
-          echo "SOME_VAR= $Env:SOME_VAR"
-          dir env:
+          echo "SOME_VAR=$SOME_VAR"
+          env
