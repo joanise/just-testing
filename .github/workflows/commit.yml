@@ -1,0 +1,31 @@
+name: commit test
+
+on:
+  push:
+    branches: [commit-test]
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    permissions:
+      content: write  # may be required to allow to push commits
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup GitHut actions bot identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: first commit
+        run: |
+          #if git status --porcelain valid_proxies.txt | grep valid_proxies.txt; then
+          git add valid_proxies.txt
+          git commit -m'updating valid_proxies.txt'
+          git push
+      - name: modify valid_proxies
+        run: echo asdf >> valid_proxies.txt
+      - name: first commit
+        run: |
+          #if git status --porcelain valid_proxies.txt | grep valid_proxies.txt; then
+          git add valid_proxies.txt
+          git commit -m'updating valid_proxies.txt'
+          git push
