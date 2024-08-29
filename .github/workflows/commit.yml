@@ -8,7 +8,7 @@ jobs:
   commit:
     runs-on: ubuntu-latest
     permissions:
-      content: write  # may be required to allow to push commits
+      contents: write  # may be required to allow to push commits
     steps:
       - uses: actions/checkout@v4
       - name: Setup GitHut actions bot identity
