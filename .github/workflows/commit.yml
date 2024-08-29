@@ -27,3 +27,8 @@ jobs:
           git add valid_proxies.txt
           # Only try to push if there are changes, i.e., if the commit is successful
           if git commit -m'updating valid_proxies.txt'; then git push; fi
+      - run: echo qwer >> valid_proxies.txt
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: update valid_proxies.txt
+          file_pattern: valid_proxies.txt
