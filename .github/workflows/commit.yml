@@ -17,15 +17,13 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: first commit
         run: |
-          #if git status --porcelain valid_proxies.txt | grep valid_proxies.txt; then
           git add valid_proxies.txt
-          git commit -m'updating valid_proxies.txt'
-          git push
+          # Only try to push if there are changes, i.e., if the commit is successful
+          if git commit -m'updating valid_proxies.txt'; then git push; fi
       - name: modify valid_proxies
         run: echo asdf >> valid_proxies.txt
       - name: first commit
         run: |
-          #if git status --porcelain valid_proxies.txt | grep valid_proxies.txt; then
           git add valid_proxies.txt
-          git commit -m'updating valid_proxies.txt'
-          git push
+          # Only try to push if there are changes, i.e., if the commit is successful
+          if git commit -m'updating valid_proxies.txt'; then git push; fi
