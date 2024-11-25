@@ -139,9 +139,11 @@ jobs:
 
   build-editd:
     runs-on: windows-latest
+    shell: bash
     steps:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
           cache: "pip"
       - run: pip install editdistance
+      - run: find /c/users/RUNNER~1
