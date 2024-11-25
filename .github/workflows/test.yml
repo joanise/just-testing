@@ -144,4 +144,4 @@ jobs:
         with:
           python-version: "3.13"
           cache: "pip"
-      - pip install editdistance
+      - run: pip install editdistance
