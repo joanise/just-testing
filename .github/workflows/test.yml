@@ -146,6 +146,11 @@ jobs:
           python-version: "3.13"
           cache: "pip"
       - run: pip install editdistance
-      - name: find
-        shell: bash
-        run: find /c/users/RUNNER~1
+      #- name: find
+      #  shell: bash
+      #  run: find /c/users/RUNNER~1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editdistance-wheel
+          path: /c/users/RUNNER~1/AppData/Local/pip/cache/wheels/5d/f0/83/35579f35f97d5b90384045f587f969100fd0ee02b80fe95317/editdistance-0.8.1-cp313-cp313-win_amd64.whl 
+
