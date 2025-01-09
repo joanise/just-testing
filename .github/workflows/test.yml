@@ -113,7 +113,9 @@ jobs:
       - name: background and wait
         run: |
           date
-          for shard in 1 2 3 4; do echo "shard $shard" && sleep 3 & done; wait
+          for shard in 1 2 3 4; do
+            echo "shard $shard" && sleep 3 &
+          done; wait
           echo "all done"
           date
 
