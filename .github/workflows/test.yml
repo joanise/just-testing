@@ -124,6 +124,7 @@ jobs:
         run: |
           python print-json.py
           python print-json.py >> "$GITHUB_OUTPUT"
+          python write-json.py
 
       - name: inspect GITHUB_OUTPUT
         run: cat "$GITHUB_OUTPUT"
@@ -131,9 +132,11 @@ jobs:
       - name: read json output
         env:
           OUTPUT: ${{ steps.json-output.outputs.MY_VAR }}
+          OUTPUT2: ${{ steps.json-output.outputs.MY_VAR2 }}
         run: |
           echo "$OUTPUT"
           echo "$OUTPUT" | jq
+          echo "$OUTPUT2"
 
   reuser:
     uses: ./.github/workflows/reusable.yml
