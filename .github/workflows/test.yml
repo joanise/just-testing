@@ -125,9 +125,12 @@ jobs:
           python print-json.py
           python print-json.py >> "$GITHUB_OUTPUT"
 
+      - name: inspect GITHUB_OUTPUT
+        run: cat "$GITHUB_OUTPUT"
+
       - name: read json output
         env:
-          OUTPUT: ${{ steps.json-output.outputs }}
+          OUTPUT: ${{ steps.json-output.outputs.MY_VAR }}
         run: echo "$OUTPUT"
 
   reuser:
