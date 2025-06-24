@@ -131,7 +131,9 @@ jobs:
       - name: read json output
         env:
           OUTPUT: ${{ steps.json-output.outputs.MY_VAR }}
-        run: echo "$OUTPUT"
+        run: |
+          echo "$OUTPUT"
+          echo "$OUTPUT" | jq
 
   reuser:
     uses: ./.github/workflows/reusable.yml
