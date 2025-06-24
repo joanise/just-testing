@@ -119,6 +119,17 @@ jobs:
           echo "all done"
           date
 
+      - name: test json output
+        id: json-output
+        run: |
+          python print-json.py
+          python print-json.py >> "$GITHUB_OUTPUT"
+
+      - name: read json output
+        env:
+          OUTPUT: ${{ steps.json-output.outputs }}
+        run: echo "$OUTPUT"
+
   reuser:
     uses: ./.github/workflows/reusable.yml
     with:
