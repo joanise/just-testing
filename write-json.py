@@ -6,4 +6,4 @@ print(json.dumps(my_dict))
 print(json.dumps(my_dict, indent=2))
 print(f"MY_VAR2={json.dumps(my_dict)}")
 with open(os.environ['GITHUB_OUTPUT'], 'a') as outfile:
-    print(f"MY_VAR2={json.dumps(my_dict, indent=2)}", file=outfile)
+    print(f"MY_VAR2={json.dumps(my_dict)}", file=outfile)
