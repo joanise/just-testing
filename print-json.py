@@ -1,6 +1,6 @@
 import json
 
-my_dict = {"foo": {"a": 123, "b": "asdf", "c": 1.3}}
+my_dict = {"foo": {"a": 123, "b": "as'df", "c": 1.3, "d": 'qw"rt'}}
 #print(json.dumps(my_dict))
 #print(json.dumps(my_dict, indent=2))
-print(f"MY_VAR='{json.dumps(my_dict)}'")
+print(f"MY_VAR={json.dumps(my_dict)}")
