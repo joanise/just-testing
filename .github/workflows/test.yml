@@ -165,6 +165,14 @@ jobs:
           echo "SOME_VAR=$SOME_VAR"
           env
 
+  secret-test:
+    runs-on: ubuntu-latest
+    env:
+      MY_SECRET: ${{ secrets.MY_SECRET }}
+    steps:
+      - run: echo ${{ secrets.MY_SECRET }} | wc
+      - run: echo $MY_SECRET | wc
+
   #build-editd:
   #  runs-on: windows-latest
   #  steps:
