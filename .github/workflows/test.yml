@@ -189,3 +189,15 @@ jobs:
   #      with:
   #        name: editdistance-wheel
   #        path: c:\\users\\RUNNER~1\\AppData\\Local\\pip\\cache\\wheels\\5d\\f0\\83\\35579f35f97d5b90384045f587f969100fd0ee02b80fe95317\\*.whl
+
+  test-artifacts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - run: mkdir dist
+      - run: echo asdef > dist/foo.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          path: dist/
